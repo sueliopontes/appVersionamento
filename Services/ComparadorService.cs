@@ -16,9 +16,8 @@ namespace SignaVersionamento.Services
             FileStream fs1;
             FileStream fs2;
 
-            fs1 = new FileStream(file1, FileMode.Open);
-            fs2 = new FileStream(file2, FileMode.Open);
-
+            fs1 = new FileStream(file1, FileMode.Open,FileAccess.Read,FileShare.ReadWrite);
+            fs2 = new FileStream(file2, FileMode.Open,FileAccess.Read,FileShare.ReadWrite);
 
             if (fs1.Length != fs2.Length)
             {
@@ -26,7 +25,7 @@ namespace SignaVersionamento.Services
                 fs2.Close();
 
                 return false;
-            }
+            }            
 
             fs1.Close();
             fs2.Close();
@@ -42,8 +41,8 @@ namespace SignaVersionamento.Services
             FileStream fs1;
             FileStream fs2;
 
-            fs1 = new FileStream(file1, FileMode.Open);
-            fs2 = new FileStream(file2, FileMode.Open);
+            fs1 = new FileStream(file1,FileMode.Open,FileAccess.Read);
+            fs2 = new FileStream(file2,FileMode.Open,FileAccess.Read);
 
             do
             {
@@ -125,9 +124,8 @@ namespace SignaVersionamento.Services
 
         public bool isEquals(string arquivoOrigem, string arquivoDestino)
         {
-            if (this.FileCompareTamanho(arquivoOrigem, arquivoDestino) == true) &&
-            (this.FileCompareConteudo(arquivoOrigem, arquivoDestino) == true) &&
-            (this.FileCompareDateLastWrite(arquivoOrigem, arquivoDestino) == true)
+            if (this.FileCompareTamanho(arquivoOrigem, arquivoDestino) == true)
+            //&&  this.FileCompareConteudo(arquivoOrigem, arquivoDestino) == true && this.FileCompareDateLastWrite(arquivoOrigem, arquivoDestino) == true)
             {
                 return true;
             }

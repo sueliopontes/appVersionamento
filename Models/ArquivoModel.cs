@@ -1,5 +1,6 @@
 using System;
 
+
 namespace SignaVersionamento.Models
 {
     public class ArquivoModel
@@ -10,5 +11,6 @@ namespace SignaVersionamento.Models
         public DateTime DateUpdate { get; set; }
         public long Tamanho { get; set; }        
         public bool Status { get; set; }
+        public LocalModel Local { get; set; }
     }
 }

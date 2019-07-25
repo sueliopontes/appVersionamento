@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 
 namespace SignaVersionamento.Models
@@ -10,7 +11,7 @@ namespace SignaVersionamento.Models
         public DateTime DateCreate { get; set; }
         public DateTime DateUpdate { get; set; }
         public long Tamanho { get; set; }        
-        public bool Status { get; set; }
-        public LocalModel Local { get; set; }
+        public List<StatusModel> Status { get; set; }
+        
     }
 }

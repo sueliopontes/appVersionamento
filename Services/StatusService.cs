@@ -63,7 +63,7 @@ namespace SignaVersionamento.Services
            }
         }
 
-         private List<string> CarregarListaArquivos(List<AmbienteModel> ambientes)
+        private List<string> CarregarListaArquivos(List<AmbienteModel> ambientes)
         {
            
             List<string> arquivos = new List<string>();
@@ -87,6 +87,24 @@ namespace SignaVersionamento.Services
            return arquivos;           
         }
 
+         private ArquivoModel CompararArquivoAmbiente(string arquivo,ArquivoModel arquivoModel, List<AmbienteModel> ambientes,int ambienteRef)
+        {
+            string ambienteRef = ambientes(x=> x.id=ambienteRef).ambiente.ToString();
+            
+            foreach (AmbienteModel ambiente in ambientes){
+
+
+
+
+
+           }
+            
+            
+           return arquivos;           
+        }
+
+
+
 
         public List<ArquivoModel> GetArquivosFisico()
         {
@@ -98,30 +116,23 @@ namespace SignaVersionamento.Services
 
             List<string> arquivos = CarregarListaArquivos(ambientes);            
 
-            List<ArquivoModel> 
-            
-
-            
+            List<ArquivoModel> arquivoList = new List<ArquivoModel>();
 
             ComparadorService comparador = new ComparadorService();
 
-            foreach(string arquivo in arquivosDestino)
+            int contador=1;
+
+            foreach(string arquivo in arquivos)
             {
                 ArquivoModel arquivoModel = new ArquivoModel();
 
-                //arquivoModel.Id=1;               
-
+                arquivoModel.Id=contadsor;               
                 arquivoModel.Nome=arquivo;
-                arquivoModel.Tamanho=this.GetArquivoTamanho(arquivo);
-                arquivoModel.DateCreate=this.GetArquivoDateCreate(arquivo);
-                arquivoModel.DateUpdate=this.GetArquivoDateUpdate(arquivo);
-                if (this.isExistArquivo(arquivo,localOrigem) != null){
-                    arquivoModel.Status= comparador.isEquals(arquivo,this.isExistArquivo(arquivo,localOrigem));
-                }
-                else{
-                    arquivoModel.Status= false;
-                }                
+                arquivoModel= this.CompararAquivoAmbiente(arquivo,arquivoModel,ambientes);                
                 arquivoList.Add(arquivoModel);            }            
+
+                comparador ++;
+            }
 
             return arquivoList;
         }

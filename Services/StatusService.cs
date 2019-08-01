@@ -100,7 +100,7 @@ namespace SignaVersionamento.Services
            }
             
             
-           return arquivos;           
+           return arquivoModel;           
         }
 
 
@@ -126,9 +126,9 @@ namespace SignaVersionamento.Services
             {
                 ArquivoModel arquivoModel = new ArquivoModel();
 
-                arquivoModel.Id=contadsor;               
+                arquivoModel.Id=contador;               
                 arquivoModel.Nome=arquivo;
-                arquivoModel= this.CompararAquivoAmbiente(arquivo,arquivoModel,ambientes);                
+                arquivoModel= this.CompararAquivoAmbiente(arquivo,arquivoModel,ambientes,1);                
                 arquivoList.Add(arquivoModel);            }            
 
                 comparador ++;
